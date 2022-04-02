@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Consumable.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Consumables/SmallHealthPotion.png" type="Texture" id=2]
+
+[node name="Small Health Potion" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 50
+description = "Heals the user for 50 health points."
+targetStat = "currentHp"
+statBonus = 50

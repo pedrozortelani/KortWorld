@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Equipments/Weapons/NoviceSword.png" type="Texture" id=2]
+
+[node name="Novice Sword" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 50
+type = 1
+description = "The simplest sword you can get.
+Min Damage: 4
+Max Damage: 6"
+slot = 3
+minDmg = 4
+maxDmg = 6
+critMultiplier = 1.5

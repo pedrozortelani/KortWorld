@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Structures/Stores/MagicStore.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Mechanics/Scene/EntranceTeleport.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12.2654, 10 )
+
+[node name="MagicStore" type="StaticBody2D"]
+position = Vector2( 536.5, 130 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -50 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 2.05872, -21.5061 )
+shape = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12.0859, -5.42581, -14.6086, -5.21559, -23.2278, -8.7894, -23.8585, -64.4988, 27.4362, -64.4988, 27.4362, -9.20985, 18.6068, -5.63604, 15.4534, -5.42581, 15.4534, -32.5447, -11.8757, -32.3345 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

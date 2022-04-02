@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Spell.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Spells/Weaken.png" type="Texture" id=2]
+
+[node name="Weaken" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 200
+type = 2
+description = "Weakens the target recuding its attack by 20%.
+Mana Cost: 5"
+effectType = 1
+targetType = 1
+manaCost = 5
+targetStat = "attack"
+statBonus = 0.8
+spellDescription = "got its attack reduced by 20%."

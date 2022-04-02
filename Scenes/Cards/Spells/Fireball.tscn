@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Spell.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Spells/Fireball.png" type="Texture" id=2]
+
+[node name="Fireball" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 250
+type = 2
+description = "Shoots a fireball at a target enemy.
+Min Damage: 6
+Max Damage: 10
+Mana Cost: 8"
+targetType = 1
+manaCost = 8
+minDmg = 6
+maxDmg = 10

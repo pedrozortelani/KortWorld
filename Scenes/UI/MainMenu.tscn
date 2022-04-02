@@ -1,0 +1,1199 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/ChevyRay - Oeuf.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/UI/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/UI/MainMenu/MainMenuBackground.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/MainMenu/MainMenuFrame.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Cards/Inventory.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Cards/CardSlot.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/UI/InventoryMenu.gd" type="Script" id=7]
+[ext_resource path="res://Assets/UI/Cards/Selector.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Status/BarsEmpty.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/Status/CharacterCase.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/UI/StatsMenu.gd" type="Script" id=11]
+[ext_resource path="res://Assets/UI/Status/HPBar.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Status/MANABar.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI/Status/EXPBar.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.156863 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.156863 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.156863 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 0.156863 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 13
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+margin_left = -2.11902
+margin_right = 637.881
+margin_bottom = 360.0
+rect_scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="MainMenu"]
+position = Vector2( 214, 120 )
+texture = ExtResource( 3 )
+
+[node name="Frame" type="Sprite" parent="MainMenu"]
+position = Vector2( 100, 120 )
+texture = ExtResource( 4 )
+
+[node name="Buttons" type="Node2D" parent="MainMenu"]
+
+[node name="StatsBtn" type="Button" parent="MainMenu/Buttons"]
+margin_top = 56.0
+margin_right = 99.0
+margin_bottom = 75.0
+focus_neighbour_bottom = NodePath("../InventoryBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+text = "    Stats"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryBtn" type="Button" parent="MainMenu/Buttons"]
+margin_top = 91.0
+margin_right = 99.0
+margin_bottom = 110.0
+focus_neighbour_top = NodePath("../StatsBtn")
+focus_neighbour_bottom = NodePath("../WorldMapBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+text = "    Deck Box"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorldMapBtn" type="Button" parent="MainMenu/Buttons"]
+margin_top = 126.0
+margin_right = 99.0
+margin_bottom = 146.0
+focus_neighbour_top = NodePath("../InventoryBtn")
+focus_neighbour_bottom = NodePath("../SaveGameBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+text = "    World Map"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveGameBtn" type="Button" parent="MainMenu/Buttons"]
+margin_left = 0.396
+margin_top = 161.0
+margin_right = 99.396
+margin_bottom = 181.0
+focus_neighbour_top = NodePath("../WorldMapBtn")
+focus_neighbour_bottom = NodePath("../QuitGameBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+text = "    Save Game"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameBtn" type="Button" parent="MainMenu/Buttons"]
+margin_top = 196.0
+margin_right = 99.0
+margin_bottom = 216.0
+focus_neighbour_top = NodePath("../SaveGameBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 5 )
+text = "    Exit Game"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SubMenus" type="Node2D" parent="MainMenu"]
+position = Vector2( 110, 7 )
+
+[node name="WorldMap" type="Control" parent="MainMenu/SubMenus"]
+visible = false
+margin_right = 310.0
+margin_bottom = 226.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="Control" parent="MainMenu/SubMenus"]
+visible = false
+margin_right = 310.0
+margin_bottom = 226.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardSlot" type="Sprite" parent="MainMenu/SubMenus/Inventory"]
+position = Vector2( 65, 110 )
+texture = ExtResource( 6 )
+
+[node name="InventorySlots" type="Sprite" parent="MainMenu/SubMenus/Inventory"]
+position = Vector2( 222, 110 )
+texture = ExtResource( 5 )
+
+[node name="Mainhand" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 17.0
+margin_top = 28.0
+margin_right = 89.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Mainhand"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Offhand" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 85.0
+margin_top = 28.0
+margin_right = 157.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Offhand"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Helmet" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 27.0
+margin_top = 135.0
+margin_right = 99.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Helmet"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 51.0
+margin_top = 135.0
+margin_right = 126.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Armor"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boots" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 75.0
+margin_top = 135.0
+margin_right = 150.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Boots"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell 1" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 14.088
+margin_top = 171.0
+margin_right = 89.088
+margin_bottom = 188.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Spell 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell 2" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 38.0
+margin_top = 171.0
+margin_right = 113.0
+margin_bottom = 188.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Spell 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell 3" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 62.0
+margin_top = 171.0
+margin_right = 137.0
+margin_bottom = 188.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Spell 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell 4" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 86.0
+margin_top = 171.0
+margin_right = 161.0
+margin_bottom = 188.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Spell 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterText" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 200.0
+margin_top = 35.0
+margin_right = 272.0
+margin_bottom = 52.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 6 )
+text = "Consumables"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftText" type="Label" parent="MainMenu/SubMenus/Inventory"]
+modulate = Color( 1, 1, 1, 0.313726 )
+margin_left = 165.0
+margin_top = 38.0
+margin_right = 237.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 6 )
+text = "Equipments"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightText" type="Label" parent="MainMenu/SubMenus/Inventory"]
+modulate = Color( 1, 1, 1, 0.313726 )
+margin_left = 235.0
+margin_top = 38.0
+margin_right = 307.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 6 )
+text = "Spells"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 79.0
+margin_right = 100.0
+margin_bottom = 108.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Health: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 79.0
+margin_right = 138.0
+margin_bottom = 108.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 85.0
+margin_right = 100.0
+margin_bottom = 114.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Mana: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 85.0
+margin_right = 138.0
+margin_bottom = 114.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 91.0
+margin_right = 100.0
+margin_bottom = 120.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Attack:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 91.0
+margin_right = 138.0
+margin_bottom = 120.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicAttack" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 97.0
+margin_right = 119.0
+margin_bottom = 126.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Magic Attack:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicAttackValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 97.0
+margin_right = 138.0
+margin_bottom = 126.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 103.0
+margin_right = 119.0
+margin_bottom = 132.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Defense:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefenseValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 103.0
+margin_right = 138.0
+margin_bottom = 132.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicDefense" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 109.0
+margin_right = 128.0
+margin_bottom = 138.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Magic Defense:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicDefenseValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 109.0
+margin_right = 138.0
+margin_bottom = 138.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CriticalChance" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 115.0
+margin_right = 137.0
+margin_bottom = 144.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Critical Chance:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CriticalChanceValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 115.0
+margin_right = 138.0
+margin_bottom = 144.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dodge" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 45.0
+margin_top = 121.0
+margin_right = 137.0
+margin_bottom = 150.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Dodge:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DodgeValue" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 81.0
+margin_top = 121.0
+margin_right = 138.0
+margin_bottom = 150.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slots" type="Node2D" parent="MainMenu/SubMenus/Inventory"]
+
+[node name="Slot1" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 174, 62 )
+z_index = 1
+
+[node name="Selector" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots/Slot1"]
+z_as_relative = false
+texture = ExtResource( 8 )
+
+[node name="Slot2" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 198, 62 )
+z_index = 1
+
+[node name="Slot3" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 222, 62 )
+z_index = 1
+
+[node name="Slot4" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 246, 62 )
+z_index = 1
+
+[node name="Slot5" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 270, 62 )
+z_index = 1
+
+[node name="Slot6" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 174, 86 )
+z_index = 1
+
+[node name="Slot7" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 198, 86 )
+z_index = 1
+
+[node name="Slot8" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 222, 86 )
+z_index = 1
+
+[node name="Slot9" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 246, 86 )
+z_index = 1
+
+[node name="Slot10" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 270, 86 )
+z_index = 1
+
+[node name="Slot11" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 174, 110 )
+z_index = 1
+
+[node name="Slot12" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 198, 110 )
+z_index = 1
+
+[node name="Slot13" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 222, 110 )
+z_index = 1
+
+[node name="Slot14" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 246, 110 )
+z_index = 1
+
+[node name="Slot15" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 270, 110 )
+z_index = 1
+
+[node name="Slot16" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 174, 134 )
+z_index = 1
+
+[node name="Slot17" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 198, 134 )
+z_index = 1
+
+[node name="Slot18" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 222, 134 )
+z_index = 1
+
+[node name="Slot19" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 246, 134 )
+z_index = 1
+
+[node name="Slot20" type="Sprite" parent="MainMenu/SubMenus/Inventory/Slots"]
+position = Vector2( 270, 134 )
+z_index = 1
+
+[node name="Equiped" type="Node2D" parent="MainMenu/SubMenus/Inventory"]
+
+[node name="MainHand" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 31, 46 )
+
+[node name="OffHand" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 99, 46 )
+
+[node name="Helmet" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 41, 153 )
+
+[node name="Armor" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 65, 153 )
+
+[node name="Boots" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 89, 153 )
+
+[node name="Spell1" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 29, 189 )
+
+[node name="Spell2" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 53, 189 )
+
+[node name="Spell3" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 77, 189 )
+
+[node name="Spell4" type="Sprite" parent="MainMenu/SubMenus/Inventory/Equiped"]
+position = Vector2( 101, 189 )
+
+[node name="DescriptionImg" type="Sprite" parent="MainMenu/SubMenus/Inventory"]
+position = Vector2( 176, 165 )
+
+[node name="ItemName" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 195.0
+margin_top = 155.0
+margin_right = 287.0
+margin_bottom = 184.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemDescription" type="Label" parent="MainMenu/SubMenus/Inventory"]
+margin_left = 195.0
+margin_top = 165.0
+margin_right = 460.0
+margin_bottom = 257.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 6 )
+align = 3
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Control" parent="MainMenu/SubMenus"]
+visible = false
+margin_right = 310.0
+margin_bottom = 226.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterCase" type="Sprite" parent="MainMenu/SubMenus/Stats"]
+position = Vector2( 150, 57 )
+texture = ExtResource( 10 )
+
+[node name="Level" type="Label" parent="MainMenu/SubMenus/Stats"]
+margin_left = 125.0
+margin_top = 15.0
+margin_right = 224.0
+margin_bottom = 43.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Level 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bars" type="Sprite" parent="MainMenu/SubMenus/Stats"]
+position = Vector2( 150, 102 )
+texture = ExtResource( 9 )
+
+[node name="HPBar" type="TextureProgress" parent="MainMenu/SubMenus/Stats/Bars"]
+margin_left = -19.0
+margin_top = -5.0
+margin_right = 19.0
+margin_bottom = -4.0
+value = 100.0
+texture_progress = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaBar" type="TextureProgress" parent="MainMenu/SubMenus/Stats/Bars"]
+margin_left = -16.0
+margin_top = -1.0
+margin_right = 16.0
+value = 100.0
+texture_progress = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPBar" type="TextureProgress" parent="MainMenu/SubMenus/Stats/Bars"]
+margin_left = -26.0
+margin_top = 3.0
+margin_right = 26.0
+margin_bottom = 4.0
+value = 100.0
+texture_progress = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PrimaryStats" type="Node2D" parent="MainMenu/SubMenus/Stats"]
+position = Vector2( 85, 92 )
+
+[node name="Title" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 30.0
+margin_right = 102.0
+margin_bottom = 59.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Primary Stats"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Strength" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 43.0
+margin_right = 58.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Strength: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StrengthValue" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 43.0
+margin_top = 43.0
+margin_right = 101.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StrBtn" type="Button" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 48.934
+margin_top = 42.0
+margin_right = 67.934
+margin_bottom = 61.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath("../IntBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+text = "+"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inteligence" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 53.0
+margin_right = 68.0
+margin_bottom = 82.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Inteligence: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InteligenceValue" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 43.0
+margin_top = 53.0
+margin_right = 101.0
+margin_bottom = 82.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntBtn" type="Button" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 49.0
+margin_top = 52.0
+margin_right = 68.0
+margin_bottom = 71.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../StrBtn")
+focus_neighbour_bottom = NodePath("../StaBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+text = "+"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamina" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 63.0
+margin_right = 68.0
+margin_bottom = 92.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Stamina: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaValue" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 43.0
+margin_top = 63.0
+margin_right = 101.0
+margin_bottom = 92.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaBtn" type="Button" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 49.0
+margin_top = 62.0
+margin_right = 68.0
+margin_bottom = 81.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../IntBtn")
+focus_neighbour_bottom = NodePath("../DexBtn")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+text = "+"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dexterity" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 73.0
+margin_right = 68.0
+margin_bottom = 102.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Dexterity:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DexterityValue" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 43.0
+margin_top = 73.0
+margin_right = 101.0
+margin_bottom = 102.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DexBtn" type="Button" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 49.0
+margin_top = 72.0
+margin_right = 68.0
+margin_bottom = 91.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../StaBtn")
+focus_neighbour_bottom = NodePath(".")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+text = "+"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatPoints" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_top = 88.0
+margin_right = 71.0
+margin_bottom = 117.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Stats Points:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatPointsValue" type="Label" parent="MainMenu/SubMenus/Stats/PrimaryStats"]
+margin_left = 54.0
+margin_top = 88.0
+margin_right = 112.0
+margin_bottom = 117.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecundaryStats" type="Node2D" parent="MainMenu/SubMenus/Stats"]
+position = Vector2( 95, 10 )
+
+[node name="Title" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 112.0
+margin_right = 174.0
+margin_bottom = 141.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 6 )
+text = "Secundary Stats"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 126.0
+margin_right = 127.0
+margin_bottom = 155.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Health: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 126.0
+margin_right = 172.0
+margin_bottom = 155.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 132.0
+margin_right = 127.0
+margin_bottom = 161.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Mana: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 132.0
+margin_right = 172.0
+margin_bottom = 161.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 138.0
+margin_right = 127.0
+margin_bottom = 167.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Attack:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 138.0
+margin_right = 172.0
+margin_bottom = 167.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicAttack" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 144.0
+margin_right = 146.0
+margin_bottom = 173.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Magic Attack:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicAttackValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 144.0
+margin_right = 172.0
+margin_bottom = 173.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 150.0
+margin_right = 146.0
+margin_bottom = 179.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Defense:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefenseValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 150.0
+margin_right = 172.0
+margin_bottom = 179.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicDefense" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 156.0
+margin_right = 155.0
+margin_bottom = 185.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Magic Defense:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicDefenseValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 156.0
+margin_right = 172.0
+margin_bottom = 185.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CriticalChance" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 162.0
+margin_right = 164.0
+margin_bottom = 191.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Critical Chance:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CriticalChanceValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 162.0
+margin_right = 172.0
+margin_bottom = 191.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dodge" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 72.0
+margin_top = 168.0
+margin_right = 164.0
+margin_bottom = 197.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "Dodge:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DodgeValue" type="Label" parent="MainMenu/SubMenus/Stats/SecundaryStats"]
+margin_left = 115.0
+margin_top = 168.0
+margin_right = 172.0
+margin_bottom = 197.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MainMenu/Buttons/StatsBtn" to="MainMenu" method="_on_StatsBtn_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/InventoryBtn" to="MainMenu" method="_on_InventoryBtn_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/WorldMapBtn" to="MainMenu" method="_on_WorldMapBtn_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/QuitGameBtn" to="MainMenu" method="_on_QuitGameBtn_pressed"]
+[connection signal="pressed" from="MainMenu/SubMenus/Stats/PrimaryStats/StrBtn" to="MainMenu/SubMenus/Stats" method="_on_StrBtn_pressed"]
+[connection signal="pressed" from="MainMenu/SubMenus/Stats/PrimaryStats/IntBtn" to="MainMenu/SubMenus/Stats" method="_on_IntBtn_pressed"]
+[connection signal="pressed" from="MainMenu/SubMenus/Stats/PrimaryStats/StaBtn" to="MainMenu/SubMenus/Stats" method="_on_StaBtn_pressed"]
+[connection signal="pressed" from="MainMenu/SubMenus/Stats/PrimaryStats/DexBtn" to="MainMenu/SubMenus/Stats" method="_on_DexBtn_pressed"]

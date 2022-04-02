@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Structures/Stores/EquipStore.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Mechanics/Scene/EntranceTeleport.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12.2654, 10 )
+
+[node name="EquipmentStore" type="StaticBody2D"]
+position = Vector2( 98, 293 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.2 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -48 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 30.0155, -20.5045 )
+shape = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 16.5686, -4.42383, -3.35513, -4.42383, -3.35513, 3.71402, -29.4524, 3.71402, -29.4524, -3.02075, -47.973, -2.74014, -47.973, 3.71402, -65.9324, 3.99463, -65.9324, -26.5925, -34.7841, -26.3118, -34.5034, -57.1795, 55.2935, -57.1795, 55.2935, -4.14322, 43.2271, -4.14322, 43.5077, -31.3629, 16.5686, -31.3629 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Equipments/Weapons/NoviceBow.png" type="Texture" id=2]
+
+[node name="Novice Bow" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 70
+type = 1
+description = "The simplest bow you can get.
+Min Damage: 3
+Max Damage: 7"
+slot = 3
+weaponType = 1
+minDmg = 3
+maxDmg = 7
+critMultiplier = 2.0

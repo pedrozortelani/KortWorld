@@ -1,0 +1,94 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Scripts/Player/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/PlayerEquips.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/PlayerStats.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Characters/Player/WalkBack4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Characters/Player/IdleFront2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Characters/Player/WalkBack8.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Characters/Player/WalkSide2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Characters/Player/WalkFront2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Characters/Player/WalkBack2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Characters/Player/IdleFront1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Characters/Player/WalkFront1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Characters/Player/WalkBack1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Characters/Player/IdleBack2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Characters/Player/WalkBack5.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Characters/Player/IdleSide1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Characters/Player/WalkSide3.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Characters/Player/WalkBack3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Characters/Player/IdleSide2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Characters/Player/WalkBack7.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Characters/Player/WalkFront6.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Characters/Player/WalkSide1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Characters/Player/WalkFront8.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Characters/Player/WalkBack6.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Characters/Player/WalkFront7.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Characters/Player/IdleBack1.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Characters/Player/WalkFront3.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Characters/Player/WalkFront4.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Characters/Player/WalkFront5.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Characters/Player/WalkSide6.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Characters/Player/WalkSide8.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Characters/Player/WalkSide4.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Characters/Player/WalkSide7.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Characters/Player/WalkSide5.png" type="Texture" id=33]
+[ext_resource path="res://Scripts/Player/InputHandler.gd" type="Script" id=34]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 6.66182 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "walkFront",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idleFront",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "idleSide",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walkBack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "idleBack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "walkSide",
+"speed": 10.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 34 )
+
+[node name="Attributes" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Equipments" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -6.67071 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "idleFront"
+playing = true
+offset = Vector2( 0.0178924, -15.7214 )

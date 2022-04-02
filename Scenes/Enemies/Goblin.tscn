@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinDeath4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinIdle2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinDeath3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinIdle1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinDeath1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinDeath2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Enemies/Goblin/goblinHit.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Enemies/Actions/DaggerAttack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Enemies/Actions/DoNothing.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
+} ]
+
+[node name="Goblin" type="AnimatedSprite"]
+position = Vector2( -0.5, 0 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 1
+playing = true
+offset = Vector2( 1, -12 )
+script = ExtResource( 1 )
+hp = 12
+attack = 12
+critchance = 4
+dodge = 1
+actions = [ ExtResource( 10 ), ExtResource( 9 ) ]
+actionChance = [ 60, 100 ]
+experience = 2
+
+[connection signal="animation_finished" from="." to="." method="_on_Goblin_animation_finished"]

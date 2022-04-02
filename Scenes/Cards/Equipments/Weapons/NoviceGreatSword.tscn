@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Equipments/Weapons/NoviceGreatSword.png" type="Texture" id=2]
+
+[node name="Novice Greatsword" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 120
+type = 1
+description = "The simplest two handed sword you can get.
+Min Damage: 6
+Max Damage: 9"
+slot = 5
+minDmg = 6
+maxDmg = 9
+critMultiplier = 1.5

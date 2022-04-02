@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Custom/Talisman.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Consumables/Talisman.png" type="Texture" id=2]
+
+[node name="Talisman" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 100
+description = "Talismã that makes the user safe from combat for a few steps."
+usage = 2
+stepsAmount = 35000

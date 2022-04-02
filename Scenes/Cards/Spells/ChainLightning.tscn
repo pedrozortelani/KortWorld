@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Spell.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Spells/ChainLightning.png" type="Texture" id=2]
+
+[node name="Chain Lightning" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 325
+type = 2
+description = "Shoots and electricity ray that bounces on each enemy.
+Min Damage: 2
+Max Damage: 5
+Mana Cost: 10"
+targetType = 2
+manaCost = 10
+minDmg = 2
+maxDmg = 5

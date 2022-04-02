@@ -1,0 +1,560 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Assets/UI/Combat/Bars.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Combat/Background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Combat/CharCase.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Combat/BarsExp.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Combat/BarsHealth.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Combat/BarsMana.png" type="Texture" id=6]
+[ext_resource path="res://Assets/ChevyRay - Oeuf.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/UI/Combat/MenuCursor1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Combat/MenuCursor2.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Mechanics/Combat/CombatManager.gd" type="Script" id=10]
+[ext_resource path="res://Assets/UI/Combat/MonsterBarFill.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/Combat/MonsterBar1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Combat/Items.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI/Combat/itemSelector.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI/Combat/Reward.png" type="Texture" id=15]
+[ext_resource path="res://Assets/UI/Combat/Cursor2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/UI/Combat/Cursor1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/UI/Combat/Cursor3.png" type="Texture" id=18]
+[ext_resource path="res://Assets/UI/Game/DialogSkip3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/UI/Game/DialogSkip2.png" type="Texture" id=20]
+[ext_resource path="res://Assets/UI/Game/DialogSkip1.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/UI/Reward.gd" type="Script" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 13
+outline_color = Color( 0.572549, 0.560784, 0.721569, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+} ]
+
+[node name="Combat" type="Node2D"]
+z_index = 1
+script = ExtResource( 10 )
+
+[node name="CombatInterface" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="UI" type="Control" parent="CombatInterface"]
+visible = false
+margin_left = 320.0
+margin_top = 180.0
+margin_right = 360.0
+margin_bottom = 220.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="CombatInterface/UI"]
+texture = ExtResource( 2 )
+
+[node name="CharCase" type="Sprite" parent="CombatInterface/UI"]
+position = Vector2( -139, 46 )
+texture = ExtResource( 3 )
+
+[node name="PlayerBars" type="Sprite" parent="CombatInterface/UI"]
+position = Vector2( -90, 46 )
+texture = ExtResource( 1 )
+
+[node name="HealthBar" type="TextureProgress" parent="CombatInterface/UI/PlayerBars"]
+margin_left = -28.0
+margin_top = -9.0
+margin_right = 31.0
+margin_bottom = -5.0
+value = 100.0
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthValue" type="Label" parent="CombatInterface/UI/PlayerBars/HealthBar"]
+margin_right = 193.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.28, 0.28 )
+custom_fonts/font = SubResource( 1 )
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaBar" type="TextureProgress" parent="CombatInterface/UI/PlayerBars"]
+margin_left = -28.0
+margin_top = -4.0
+margin_right = 26.0
+value = 100.0
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaValue" type="Label" parent="CombatInterface/UI/PlayerBars/ManaBar"]
+margin_right = 193.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.28, 0.28 )
+custom_fonts/font = SubResource( 1 )
+text = "50/50"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExpBar" type="TextureProgress" parent="CombatInterface/UI/PlayerBars"]
+margin_left = -28.0
+margin_top = 8.0
+margin_right = 17.0
+margin_bottom = 10.0
+value = 100.0
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItensMenu" type="Sprite" parent="CombatInterface/UI"]
+visible = false
+position = Vector2( -103, -32 )
+z_index = 1
+texture = ExtResource( 13 )
+
+[node name="Quantity" type="Label" parent="CombatInterface/UI/ItensMenu"]
+margin_left = 37.236
+margin_top = -46.5727
+margin_right = 56.236
+margin_bottom = -32.5727
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Qty"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="Label" parent="CombatInterface/UI/ItensMenu"]
+margin_left = -52.0
+margin_top = -52.0
+margin_right = 122.0
+margin_bottom = -38.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Itens"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item1" type="Sprite" parent="CombatInterface/UI/ItensMenu"]
+position = Vector2( -38, -32 )
+
+[node name="Name" type="Label" parent="CombatInterface/UI/ItensMenu/Item1"]
+margin_left = 15.0
+margin_top = -3.0
+margin_right = 119.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="CombatInterface/UI/ItensMenu/Item1"]
+margin_left = 77.0
+margin_top = -3.0
+margin_right = 91.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="Sprite" parent="CombatInterface/UI/ItensMenu/Item1"]
+texture = ExtResource( 14 )
+
+[node name="Item2" type="Sprite" parent="CombatInterface/UI/ItensMenu"]
+position = Vector2( -38, -7 )
+
+[node name="Name" type="Label" parent="CombatInterface/UI/ItensMenu/Item2"]
+margin_left = 15.0
+margin_top = -3.0
+margin_right = 119.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="CombatInterface/UI/ItensMenu/Item2"]
+margin_left = 77.0
+margin_top = -3.0
+margin_right = 91.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item3" type="Sprite" parent="CombatInterface/UI/ItensMenu"]
+position = Vector2( -38, 18 )
+
+[node name="Name" type="Label" parent="CombatInterface/UI/ItensMenu/Item3"]
+margin_left = 15.0
+margin_top = -3.0
+margin_right = 119.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="CombatInterface/UI/ItensMenu/Item3"]
+margin_left = 77.0
+margin_top = -3.0
+margin_right = 91.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item4" type="Sprite" parent="CombatInterface/UI/ItensMenu"]
+position = Vector2( -38, 43 )
+
+[node name="Name" type="Label" parent="CombatInterface/UI/ItensMenu/Item4"]
+margin_left = 15.0
+margin_top = -3.0
+margin_right = 119.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="CombatInterface/UI/ItensMenu/Item4"]
+margin_left = 77.0
+margin_top = -3.0
+margin_right = 91.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionMenu" type="Node2D" parent="CombatInterface/UI"]
+
+[node name="Option1" type="Label" parent="CombatInterface/UI/ActionMenu"]
+margin_left = -148.0
+margin_top = 64.0
+margin_right = -108.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Attack"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="AnimatedSprite" parent="CombatInterface/UI/ActionMenu/Option1"]
+position = Vector2( -6.5, 6 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="Option2" type="Label" parent="CombatInterface/UI/ActionMenu"]
+margin_left = -97.0
+margin_top = 64.0
+margin_right = -57.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Spells"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option3" type="Label" parent="CombatInterface/UI/ActionMenu"]
+margin_left = -148.0
+margin_top = 75.0
+margin_right = -108.0
+margin_bottom = 89.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Itens"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option4" type="Label" parent="CombatInterface/UI/ActionMenu"]
+margin_left = -97.0
+margin_top = 75.0
+margin_right = -57.0
+margin_bottom = 89.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Run"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellMenu" type="Node2D" parent="CombatInterface/UI"]
+visible = false
+
+[node name="Option1" type="Label" parent="CombatInterface/UI/SpellMenu"]
+margin_left = -148.0
+margin_top = 64.0
+margin_right = -108.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="AnimatedSprite" parent="CombatInterface/UI/SpellMenu/Option1"]
+position = Vector2( -10, 4 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="Option2" type="Label" parent="CombatInterface/UI/SpellMenu"]
+margin_left = -97.0
+margin_top = 64.0
+margin_right = -57.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option3" type="Label" parent="CombatInterface/UI/SpellMenu"]
+margin_left = -148.0
+margin_top = 75.0
+margin_right = -108.0
+margin_bottom = 89.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option4" type="Label" parent="CombatInterface/UI/SpellMenu"]
+margin_left = -97.0
+margin_top = 75.0
+margin_right = -57.0
+margin_bottom = 89.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Monster1" type="Node2D" parent="CombatInterface/UI"]
+visible = false
+position = Vector2( 0, 10 )
+
+[node name="HealthBar" type="TextureProgress" parent="CombatInterface/UI/Monster1"]
+margin_left = -10.0
+margin_top = 3.0
+margin_right = 10.0
+margin_bottom = 6.0
+value = 50.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="AnimatedSprite" parent="CombatInterface/UI/Monster1"]
+visible = false
+position = Vector2( 0.5, -35 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="Monster2" type="Node2D" parent="CombatInterface/UI"]
+visible = false
+position = Vector2( -60, -20 )
+
+[node name="HealthBar" type="TextureProgress" parent="CombatInterface/UI/Monster2"]
+margin_left = -10.0
+margin_top = 3.0
+margin_right = 10.0
+margin_bottom = 6.0
+value = 50.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="AnimatedSprite" parent="CombatInterface/UI/Monster2"]
+visible = false
+position = Vector2( 0.5, -35 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="Monster3" type="Node2D" parent="CombatInterface/UI"]
+visible = false
+position = Vector2( 60, -20 )
+
+[node name="HealthBar" type="TextureProgress" parent="CombatInterface/UI/Monster3"]
+margin_left = -10.0
+margin_top = 3.0
+margin_right = 10.0
+margin_bottom = 6.0
+value = 50.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="AnimatedSprite" parent="CombatInterface/UI/Monster3"]
+visible = false
+position = Vector2( 0.5, -35 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="Monster4" type="Node2D" parent="CombatInterface/UI"]
+visible = false
+position = Vector2( 0, -50 )
+
+[node name="HealthBar" type="TextureProgress" parent="CombatInterface/UI/Monster4"]
+margin_left = -10.0
+margin_top = 3.0
+margin_right = 10.0
+margin_bottom = 6.0
+value = 50.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="AnimatedSprite" parent="CombatInterface/UI/Monster4"]
+visible = false
+position = Vector2( 0.5, -35 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="InfoBoard" type="Label" parent="CombatInterface/UI"]
+margin_left = -46.315
+margin_top = 32.8348
+margin_right = 348.685
+margin_bottom = 133.835
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reward" type="Control" parent="CombatInterface"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="CombatInterface/Reward"]
+position = Vector2( 320, 180 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="RewardInfo" type="Label" parent="CombatInterface/Reward/Background"]
+margin_left = -73.0
+margin_top = -24.0
+margin_right = 411.0
+margin_bottom = 181.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CombatInterface/Reward/Background"]
+position = Vector2( -1, 40 )
+frames = SubResource( 6 )
+frame = 2
+playing = true

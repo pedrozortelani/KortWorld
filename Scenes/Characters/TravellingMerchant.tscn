@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Characters/TravellingMerchant/TravellingMerchant2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Characters/TravellingMerchant/TravellingMerchant1.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Mechanics/NPC/Store.gd" type="Script" id=3]
+[ext_resource path="res://Assets/UI/Store/StoreBuy.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Mechanics/NPC/Vendor.gd" type="Script" id=5]
+[ext_resource path="res://Assets/ChevyRay - Oeuf.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.41486, 7.96875 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15.25, 22.5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 13
+font_data = ExtResource( 6 )
+
+[node name="TravellingMerchant" type="StaticBody2D"]
+position = Vector2( 300, 216 )
+collision_layer = 2
+script = ExtResource( 5 )
+textArray = [ "Hello, I'm a travelling merchant.", "What could I help you with? Want to Buy/Sell something?" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.562, -7 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.5, 0 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1.25, -15.5 )
+shape = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="CanvasLayer/UI"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 4 )
+
+[node name="Buy" type="Label" parent="CanvasLayer/UI"]
+margin_left = 180.0
+margin_top = 26.0
+margin_right = 220.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sell" type="Label" parent="CanvasLayer/UI"]
+margin_left = 208.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "Sell"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="CanvasLayer/UI"]
+margin_left = 23.0
+margin_top = 66.0
+margin_right = 100.0
+margin_bottom = 86.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 4 )
+text = "$ 10000"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="Description" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Description"]
+position = Vector2( 44, 99 )
+
+[node name="DescriptionText" type="Label" parent="CanvasLayer/UI/Description"]
+margin_left = 20.0
+margin_top = 116.0
+margin_right = 209.0
+margin_bottom = 228.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 4 )
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

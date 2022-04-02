@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Equipment.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Equipments/Weapons/NoviceQuiver.png" type="Texture" id=2]
+
+[node name="Novice Quiver" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+type = 1
+description = "The simplest quiver you can get. Gives 2 attack bonus when equipped with a bow."
+slot = 4
+weaponTypeBonus = 1
+weaponTypeBonusStat = [ "attack" ]
+weaponTypeBonusValue = [ 2 ]

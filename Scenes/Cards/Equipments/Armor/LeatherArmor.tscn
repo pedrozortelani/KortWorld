@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Equipment.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Equipments/Armor/LeatherArmor.png" type="Texture" id=2]
+
+[node name="Leather Armor" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 100
+type = 1
+description = "Armor made of leather.
+Bonus Defense: 4"
+slot = 1
+statsList = [ "defense" ]
+amountList = [ 4 ]

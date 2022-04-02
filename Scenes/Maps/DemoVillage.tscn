@@ -1,0 +1,372 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Scenes/Mechanics/DangerZone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Structures/EquipmentStore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Structures/MagicStore.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Structures/ConsumableStore.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Characters/TravellingMerchant.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Props/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Tilesets/VillageTileset.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Maps/EquipmentsStore.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Cards/Equipments/Weapons/NoviceQuiver.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Cards/Card.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Cards/Consumables/ManaPotion.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Cards/Consumables/SmallManaPotion.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Maps/SpellsStore.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Cards/Consumables/HealthPotion.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Cards/Consumables/Weight.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Cards/Spells/Fireball.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Cards/Spells/ChainLightning.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Cards/Consumables/Talisman.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Cards/Equipments/Weapons/NoviceSword.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Cards/Equipments/Weapons/NoviceBow.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Cards/Spells/Weaken.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Cards/Consumables/SmallHealthPotion.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Cards/Equipments/Weapons/NoviceGreatSword.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scenes/Cards/Equipments/Armor/LeatherArmor.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Cards/Equipments/Armor/LeatherBandana.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scenes/Cards/Equipments/Armor/LeatherBoots.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Scenes/Maps/ConsumablesStore.tscn" type="PackedScene" id=28]
+
+[sub_resource type="TileSet" id=1]
+0/name = "VillageTileset.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "VillageTileset.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 32, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "VillageTileset.png 2"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 64, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "VillageTileset.png 3"
+3/texture = ExtResource( 7 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 32, 0, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "VillageTileset.png 4"
+4/texture = ExtResource( 7 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 32, 32, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "VillageTileset.png 5"
+5/texture = ExtResource( 7 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 32, 64, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "VillageTileset.png 6"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 64, 0, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "VillageTileset.png 7"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 64, 32, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "VillageTileset.png 8"
+8/texture = ExtResource( 7 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 64, 64, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "VillageTileset.png 9"
+9/texture = ExtResource( 7 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 96, 0, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "VillageTileset.png 10"
+10/texture = ExtResource( 7 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 128, 0, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "VillageTileset.png 11"
+11/texture = ExtResource( 7 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 96, 32, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "VillageTileset.png 12"
+12/texture = ExtResource( 7 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 128, 32, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "VillageTileset.png 13"
+13/texture = ExtResource( 7 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 96, 64, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+
+[node name="Map" type="YSort"]
+
+[node name="Background" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 13, 0, 1, 13, 0, 2, 13, 0, 3, 13, 0, 4, 13, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 13, 0, 9, 13, 0, 10, 13, 0, 11, 13, 0, 12, 13, 0, 13, 13, 0, 14, 13, 0, 15, 13, 0, 16, 13, 0, 17, 13, 0, 18, 13, 0, 19, 13, 0, 65536, 13, 0, 65537, 13, 0, 65538, 13, 0, 65539, 13, 0, 65540, 13, 0, 65541, 13, 0, 65542, 13, 0, 65543, 13, 0, 65544, 13, 0, 65545, 13, 0, 65546, 13, 0, 65547, 13, 0, 65548, 13, 0, 65549, 13, 0, 65550, 13, 0, 65551, 13, 0, 65552, 13, 0, 65553, 13, 0, 65554, 13, 0, 65555, 13, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131075, 13, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131084, 13, 0, 131085, 13, 0, 131086, 13, 0, 131087, 13, 0, 131088, 13, 0, 131089, 13, 0, 131090, 13, 0, 131091, 13, 0, 196608, 13, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 13, 0, 196614, 13, 0, 196615, 13, 0, 196616, 13, 0, 196617, 13, 0, 196618, 13, 0, 196619, 13, 0, 196620, 13, 0, 196621, 13, 0, 196622, 13, 0, 196623, 13, 0, 196624, 13, 0, 196625, 13, 0, 196626, 13, 0, 196627, 13, 0, 262144, 13, 0, 262145, 0, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 262157, 3, 0, 262158, 3, 0, 262159, 3, 0, 262160, 3, 0, 262161, 6, 0, 262162, 13, 0, 262163, 13, 0, 327680, 13, 0, 327681, 2, 0, 327682, 5, 0, 327683, 5, 0, 327684, 5, 0, 327685, 10, 0, 327686, 9, 0, 327687, 5, 0, 327688, 5, 0, 327689, 5, 0, 327690, 5, 0, 327691, 5, 0, 327692, 10, 0, 327693, 9, 0, 327694, 5, 0, 327695, 5, 0, 327696, 5, 0, 327697, 8, 0, 327698, 13, 0, 327699, 13, 0, 393216, 13, 0, 393217, 13, 0, 393218, 13, 0, 393219, 13, 0, 393220, 13, 0, 393221, 1, 0, 393222, 7, 0, 393223, 13, 0, 393224, 13, 0, 393225, 13, 0, 393226, 13, 0, 393227, 13, 0, 393228, 1, 0, 393229, 7, 0, 393230, 13, 0, 393231, 13, 0, 393232, 13, 0, 393233, 13, 0, 393234, 13, 0, 393235, 13, 0, 458752, 13, 0, 458753, 13, 0, 458754, 13, 0, 458755, 13, 0, 458756, 13, 0, 458757, 1, 0, 458758, 7, 0, 458759, 13, 0, 458760, 13, 0, 458761, 13, 0, 458762, 13, 0, 458763, 13, 0, 458764, 1, 0, 458765, 7, 0, 458766, 13, 0, 458767, 13, 0, 458768, 13, 0, 458769, 13, 0, 458770, 13, 0, 458771, 13, 0, 524288, 13, 0, 524289, 13, 0, 524290, 13, 0, 524291, 13, 0, 524292, 13, 0, 524293, 1, 0, 524294, 7, 0, 524295, 13, 0, 524296, 13, 0, 524297, 13, 0, 524298, 13, 0, 524299, 0, 0, 524300, 12, 0, 524301, 11, 0, 524302, 6, 0, 524303, 13, 0, 524304, 13, 0, 524305, 13, 0, 524306, 13, 0, 524307, 13, 0, 589824, 13, 0, 589825, 13, 0, 589826, 13, 0, 589827, 0, 0, 589828, 3, 0, 589829, 12, 0, 589830, 7, 0, 589831, 13, 0, 589832, 13, 0, 589833, 13, 0, 589834, 13, 0, 589835, 1, 0, 589836, 4, 0, 589837, 4, 0, 589838, 7, 0, 589839, 13, 0, 589840, 13, 0, 589841, 13, 0, 589842, 13, 0, 589843, 13, 0, 655360, 13, 0, 655361, 13, 0, 655362, 13, 0, 655363, 2, 0, 655364, 5, 0, 655365, 5, 0, 655366, 8, 0, 655367, 13, 0, 655368, 13, 0, 655369, 13, 0, 655370, 13, 0, 655371, 2, 0, 655372, 5, 0, 655373, 5, 0, 655374, 8, 0, 655375, 13, 0, 655376, 13, 0, 655377, 13, 0, 655378, 13, 0, 655379, 13, 0, 720896, 13, 0, 720897, 13, 0, 720898, 13, 0, 720899, 13, 0, 720900, 13, 0, 720901, 13, 0, 720902, 13, 0, 720903, 13, 0, 720904, 13, 0, 720905, 13, 0, 720906, 13, 0, 720907, 13, 0, 720908, 13, 0, 720909, 13, 0, 720910, 13, 0, 720911, 13, 0, 720912, 13, 0, 720913, 13, 0, 720914, 13, 0, 720915, 13, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 23 )]
+position = Vector2( 200, 200 )
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 360
+smoothing_enabled = true
+
+[node name="TravellingMerchant" parent="." instance=ExtResource( 5 )]
+
+[node name="ConsumableStore" parent="." instance=ExtResource( 4 )]
+destiny = Vector2( 715, -465 )
+destinyNode = "ConsumablesStore"
+
+[node name="EquipmentStore" parent="." instance=ExtResource( 2 )]
+destiny = Vector2( -284, -471 )
+destinyNode = "EquipmentsStore"
+
+[node name="MagicStore" parent="." instance=ExtResource( 3 )]
+destiny = Vector2( 220, -465 )
+destinyNode = "SpellsStore"
+
+[node name="Cards" type="YSort" parent="."]
+
+[node name="Card" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 521.176, 197.031 )
+card = ExtResource( 25 )
+id = 1
+
+[node name="Card2" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 559.573, 197.531 )
+card = ExtResource( 26 )
+id = 2
+
+[node name="Card3" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 598.773, 197.531 )
+card = ExtResource( 27 )
+id = 3
+
+[node name="Card4" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 521.411, 232.238 )
+card = ExtResource( 19 )
+id = 4
+
+[node name="Card5" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 520.662, 273.441 )
+card = ExtResource( 24 )
+id = 5
+
+[node name="Card6" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 559.618, 232.987 )
+card = ExtResource( 9 )
+id = 6
+
+[node name="Card7" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 599.323, 232.987 )
+card = ExtResource( 20 )
+id = 7
+
+[node name="Card8" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 560.037, 274.132 )
+card = ExtResource( 16 )
+id = 8
+
+[node name="Card9" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 599.377, 274.8 )
+card = ExtResource( 14 )
+amount = 2
+id = 9
+
+[node name="Card10" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 521.262, 309.703 )
+card = ExtResource( 11 )
+amount = 2
+id = 10
+
+[node name="Card11" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 559.318, 310.371 )
+card = ExtResource( 22 )
+amount = 4
+id = 11
+
+[node name="Card12" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 599.377, 312.374 )
+card = ExtResource( 12 )
+amount = 27
+id = 12
+
+[node name="Card13" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 521.423, 338.655 )
+card = ExtResource( 18 )
+amount = 2
+id = 13
+
+[node name="Card14" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 559.587, 338.094 )
+card = ExtResource( 15 )
+amount = 1
+id = 14
+
+[node name="Card15" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 599.846, 337.035 )
+card = ExtResource( 21 )
+amount = 1
+id = 15
+
+[node name="Card16" parent="Cards" instance=ExtResource( 10 )]
+position = Vector2( 489.25, 197.898 )
+card = ExtResource( 17 )
+amount = 1
+id = 16
+
+[node name="DangerZone" parent="." instance=ExtResource( 1 )]
+
+[node name="Tree" parent="." instance=ExtResource( 6 )]
+position = Vector2( 301.937, 122.923 )
+
+[node name="ConsumablesStore" parent="." instance=ExtResource( 28 )]
+position = Vector2( 554.846, -631.465 )
+destiny = Vector2( 68, 145 )
+destinyNode = "Map"
+
+[node name="EquipmentsStore" parent="." instance=ExtResource( 8 )]
+position = Vector2( -444.737, -644.401 )
+destiny = Vector2( 128, 307 )
+destinyNode = "Map"
+
+[node name="SpellsStore" parent="." instance=ExtResource( 13 )]
+position = Vector2( 59.8326, -635.98 )
+destiny = Vector2( 538, 142 )
+destinyNode = "Map"

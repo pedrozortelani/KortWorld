@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Cards/Consumable.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Consumables/Weights.png" type="Texture" id=2]
+
+[node name="Weight" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+price = 20
+description = "Increases the attack of the user by 10 points for 5 turns."
+usage = 1
+duration = 1
+targetStat = "attack"
+statBonus = 10
+durationAmount = 5

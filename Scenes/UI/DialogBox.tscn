@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/UI/DialogBox/DialogBox.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/UI/DialogBox.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ChevyRay - Oeuf.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/UI/Combat/Cursor2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Combat/Cursor1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Combat/Cursor3.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+font_data = ExtResource( 3 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="DialogBox" type="CanvasLayer"]
+offset = Vector2( 320, 280 )
+transform = Transform2D( 1, 0, 0, 1, 320, 280 )
+script = ExtResource( 2 )
+
+[node name="UI" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="UI"]
+texture = ExtResource( 1 )
+
+[node name="TextBox" type="Label" parent="UI"]
+margin_left = -110.0
+margin_top = -27.0
+margin_right = 260.0
+margin_bottom = 43.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="AnimatedSprite" parent="UI"]
+position = Vector2( 185, 28 )
+frames = SubResource( 2 )
+playing = true
